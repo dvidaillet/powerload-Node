@@ -3,6 +3,7 @@ import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import loadRoutes from "./routes/loadRoutes.js";
 import dotenv from 'dotenv';
+import cors from "cors";
 
 dotenv.config(); // Carga variables desde .env
 
@@ -14,6 +15,8 @@ connectDB();
 
 // Middleware
 app.use(express.json());
+// Habilitar CORS
+app.use(cors());
 
 // Rutas
 app.use("/powerload", userRoutes);
