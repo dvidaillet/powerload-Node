@@ -21,7 +21,6 @@ app.use(cors());
 // Rutas
 app.use("/powerload", userRoutes);
 app.use("/powerload", loadRoutes);
-// app.use("/powerload/user-roles", userRoleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
