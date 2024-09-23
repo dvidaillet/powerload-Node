@@ -1,9 +1,9 @@
-import UserRole from "../../models/config/UserRole.js";
+import UserAppRole from "../../models/config/UserRole.js";
 
 // Crear un nuevo rol
 export const createUserRole = async (req, res) => {
   try {
-    const role = new UserRole(req.body);
+    const role = new UserAppRole(req.body);
     await role.save();
     res.status(201).json(role);
   } catch (error) {
@@ -14,7 +14,7 @@ export const createUserRole = async (req, res) => {
 // Obtener todos los roles
 export const getUserRoles = async (req, res) => {
   try {
-    const roles = await UserRole.find();
+    const roles = await UserAppRole.find();
     res.status(200).json(roles);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -24,7 +24,7 @@ export const getUserRoles = async (req, res) => {
 // Obtener un rol por ID
 export const getUserRoleById = async (req, res) => {
   try {
-    const role = await UserRole.findById(req.params.id);
+    const role = await UserAppRole.findById(req.params.id);
     if (!role) {
       return res.status(404).json({ message: "Role not found" });
     }
@@ -37,7 +37,7 @@ export const getUserRoleById = async (req, res) => {
 // Actualizar un rol por ID
 export const updateUserRole = async (req, res) => {
   try {
-    const role = await UserRole.findByIdAndUpdate(req.params.id, req.body, {
+    const role = await UserAppRole.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
     res.status(200).json(role);
@@ -49,7 +49,7 @@ export const updateUserRole = async (req, res) => {
 // Eliminar un rol por ID
 export const deleteUserRole = async (req, res) => {
   try {
-    await UserRole.findByIdAndDelete(req.params.id);
+    await UserAppRole.findByIdAndDelete(req.params.id);
     res.status(204).json({ message: "Role deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -8,6 +8,6 @@ const userRoleSchema = new mongoose.Schema({
   },
 });
 
-const UserRoleRoutes = mongoose.model("UserRole", userRoleSchema);
+const UserAppRole = mongoose.model("UserAppRole", userRoleSchema);
 
-export default UserRoleRoutes;
+export default UserAppRole;

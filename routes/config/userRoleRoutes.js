@@ -2,10 +2,10 @@ import express from "express";
 import {
   createUserRole,
   getUserRoles,
+  deleteUserRole,
   getUserRoleById,
   updateUserRole,
-  deleteUserRole,
-} from "../../controllers/config/userRoleController.js";
+} from "../../controllers/config/userRoleController";
 
 const router = express.Router();
 

@@ -1,10 +1,9 @@
 import express from "express";
 import connectDB from "./config/db.js";
-import userRoutes from "./routes/users/userRoutes.js";
-import loadRoutes from "./routes/loads/loadRoutes.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import UserRoleRoutes from "./models/config/UserRole.js";
+import userRoutes from "./routes/users/userRoutes.js";
+import loadRoutes from "./routes/loads/loadRoutes.js";
 
 dotenv.config(); // Carga variables desde .env
 
@@ -22,8 +21,9 @@ app.use(cors());
 // Rutas
 app.use("/powerload", userRoutes);
 app.use("/powerload", loadRoutes);
-app.use("/api/user-roles", UserRoleRoutes);
+// app.use("/powerload/user-roles", userRoleRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
