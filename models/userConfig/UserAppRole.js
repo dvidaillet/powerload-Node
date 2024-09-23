@@ -6,9 +6,6 @@ const userAppRoleSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  description: {
-    type: String,
-  },
 });
 
 export default mongoose.model("UserAppRole", userAppRoleSchema);
