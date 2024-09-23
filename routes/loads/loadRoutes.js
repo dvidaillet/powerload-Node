@@ -5,7 +5,7 @@ import {
   getLoadById,
   updateLoad,
   deleteLoad,
-} from "../controllers/loadController.js";
+} from "../../controllers/loads/loadController.js";
 
 const router = express.Router();
 

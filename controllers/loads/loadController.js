@@ -1,4 +1,4 @@
-import Load from "../models/Load.js";
+import Load from "../../models/loads/Load.js";
 import { v4 as uuidv4 } from 'uuid'; // Importa la función para generar UUID
 
 // Crear una nueva carga

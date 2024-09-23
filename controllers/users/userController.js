@@ -1,5 +1,5 @@
 // controllers/userController.js
-import User from "../models/User.js";
+import User from "../../models/users/User.js";
 
 // Crear un nuevo usuario
 export const createUser = async (req, res) => {
