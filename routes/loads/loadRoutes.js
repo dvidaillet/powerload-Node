@@ -9,10 +9,10 @@ import {
 
 const router = express.Router();
 
-router.post("/", createLoad);
-router.get("/", getAllLoads);
-router.get("/:id", getLoadById);
-router.put("/:id", updateLoad);
-router.delete("/:id", deleteLoad);
+router.post("/loads", createLoad);
+router.get("/loads", getAllLoads);
+router.get("/loads/:id", getLoadById);
+router.put("/loads/:id", updateLoad);
+router.delete("/loads/:id", deleteLoad);
 
 export default router;

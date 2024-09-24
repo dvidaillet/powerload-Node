@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/users/userRoutes.js";
 import loadRoutes from "./routes/loads/loadRoutes.js";
+import roleRoutes from "./routes/roles/roleRoutes.js";
 
 dotenv.config(); // Carga variables desde .env
 
@@ -19,8 +20,9 @@ app.use(express.json());
 app.use(cors());
 
 // Rutas
-app.use("/powerload", userRoutes);
 app.use("/powerload", loadRoutes);
+app.use("/powerload", roleRoutes);
+app.use("/powerload", userRoutes);
 
 
 app.listen(PORT, () => {
