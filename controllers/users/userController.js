@@ -15,8 +15,26 @@ export const createUser = async (req, res) => {
 // Obtener todos los usuarios
 export const getUsers = async (req, res) => {
   try {
-    const users = await User.find(); // Esto obtiene todos los usuarios
-    res.status(200).json(users);
+    // Obtener los parámetros de paginación desde la solicitud (query params)
+    const page = parseInt(req.query.page) || 1; // Número de página, por defecto 1
+    const limit = parseInt(req.query.limit) || 10; // Límite de resultados por página, por defecto 10
+    const skip = (page - 1) * limit; // Calcular cuántos resultados saltar
+
+    // Contar el total de usuarios
+    const totalUsers = await User.countDocuments();
+
+    // Obtener los usuarios con paginación
+    const users = await User.find()
+      .skip(skip)
+      .limit(limit);
+
+    // Responder con los usuarios y la información de paginación
+    res.status(200).json({
+      totalUsers, // Total de usuarios en la base de datos
+      totalPages: Math.ceil(totalUsers / limit), // Total de páginas
+      currentPage: page, // Página actual
+      users, // Los usuarios de la página actual
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
