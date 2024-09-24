@@ -1,5 +1,5 @@
 import Load from "../../models/loads/Load.js";
-import { v4 as uuidv4 } from 'uuid'; // Importa la función para generar UUID
+import { v4 as uuidv4 } from "uuid"; // Importa la función para generar UUID
 
 // Crear una nueva carga
 export const createLoad = async (req, res) => {
@@ -19,8 +19,19 @@ export const createLoad = async (req, res) => {
 // Obtener todas las cargas
 export const getAllLoads = async (req, res) => {
   try {
-    const loads = await Load.find();
-    res.status(200).json(loads);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const totalLoads = await User.countDocuments();
+    const loads = await Load.find().skip(skip).limit(limit);
+
+    res.status(200).json({
+      totalLoads,
+      totalPages: Math.ceil(totalLoads / limit),
+      currentPage: page,
+      loads,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
