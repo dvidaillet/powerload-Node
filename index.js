@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/users/userRoutes.js";
 import loadRoutes from "./routes/loads/loadRoutes.js";
-import userAppRoleRoutes from "./routes/userConfig/userAppRoleRoutes.js";
 
 dotenv.config(); // Carga variables desde .env
 
@@ -22,7 +21,6 @@ app.use(cors());
 // Rutas
 app.use("/powerload", userRoutes);
 app.use("/powerload", loadRoutes);
-app.use("/powerload/user-app-roles", userAppRoleRoutes);
 
 
 app.listen(PORT, () => {
