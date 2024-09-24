@@ -23,7 +23,7 @@ export const getAllLoads = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    const totalLoads = await User.countDocuments();
+    const totalLoads = await Load.countDocuments();
     const loads = await Load.find().skip(skip).limit(limit);
 
     res.status(200).json({
