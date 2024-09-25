@@ -1,6 +1,7 @@
 // controllers/authController.js
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import { validationResult } from "express-validator";
 import User from "../../models/users/User.js";
 
@@ -12,7 +13,7 @@ export const registerUser = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { name, email, password } = req.body;
+  const { firstName, email, password } = req.body;
 
   try {
     // Verificar si el usuario ya existe
@@ -23,7 +24,7 @@ export const registerUser = async (req, res) => {
 
     // Crear nuevo usuario
     user = new User({
-      name,
+      firstName,
       email,
       password,
     });
@@ -38,7 +39,7 @@ export const registerUser = async (req, res) => {
     // Crear un token JWT
     const payload = {
       user: {
-        id: user.id,
+        id: user._id,
       },
     };
 
@@ -77,7 +78,7 @@ export const loginUser = async (req, res) => {
     // Crear el token JWT
     const payload = {
       user: {
-        id: user.id,
+        id: user._id,
       },
     };
 
