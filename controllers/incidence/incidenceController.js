@@ -1,12 +1,12 @@
-// controllers/userController.js
-import User from "../../models/users/User.js";
+// import User from "../../models/users/User.js";
+import Incidence from "../../models/incidence/Incidence.js";
 
 // Crear un nuevo usuario
 export const createIncidence = async (req, res) => {
   try {
-    const user = new User(req.body); // El campo `id` se generará automáticamente
-    await user.save();
-    res.status(201).json(user);
+    const incidence = new Incidence(req.body); // El campo `id` se generará automáticamente
+    await incidence.save();
+    res.status(201).json(incidence);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -20,17 +20,17 @@ export const getIncidences = async (req, res) => {
     const skip = (page - 1) * limit; // Calcular cuántos resultados saltar
 
     // Contar el total de usuarios
-    const totalUsers = await User.countDocuments();
+    const totalIncidences = await Incidence.countDocuments();
 
     // Obtener los usuarios con paginación
-    const users = await User.find().skip(skip).limit(limit);
+    const incidences = await Incidence.find().skip(skip).limit(limit);
 
     // Responder con los usuarios y la información de paginación
     res.status(200).json({
-      totalUsers, // Total de usuarios en la base de datos
-      totalPages: Math.ceil(totalUsers / limit), // Total de páginas
+      totalIncidences, // Total de usuarios en la base de datos
+      totalPages: Math.ceil(totalIncidences / limit), // Total de páginas
       currentPage: page, // Página actual
-      users, // Los usuarios de la página actual
+      incidences, // Los usuarios de la página actual
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -40,10 +40,14 @@ export const getIncidences = async (req, res) => {
 // Actualizar usuario por ID
 export const updateIncidences = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.status(200).json(user);
+    const incidence = await Incidence.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(incidence);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -52,8 +56,8 @@ export const updateIncidences = async (req, res) => {
 // Eliminar usuario por ID
 export const deleteIncidence = async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
-    res.status(204).json({ message: "User deleted" });
+    await Incidence.findByIdAndDelete(req.params.id);
+    res.status(204).json({ message: "Incidence deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -62,11 +66,11 @@ export const deleteIncidence = async (req, res) => {
 // Obtener un usuario por ID
 export const getIncidenceById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
+    const incidence = await Incidence.findById(req.params.id);
+    if (!incidence) {
+      return res.status(404).json({ message: "Incidence not found" });
     }
-    res.status(200).json(user);
+    res.status(200).json(incidence);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
