@@ -8,12 +8,12 @@ import {
   getUserById
 } from "../../controllers/users/userController.js";
 
-const router = express.Router();
+const userRoutes = express.Router();
 
-router.post("/users", createUser);
-router.get("/users", getUsers);
-router.get('/users/:id', getUserById); 
-router.put("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+userRoutes.post("/users", createUser);
+userRoutes.get("/users", getUsers);
+userRoutes.get('/users/:id', getUserById); 
+userRoutes.put("/users/:id", updateUser);
+userRoutes.delete("/users/:id", deleteUser);
 
-export default router;
+export default userRoutes;
