@@ -5,6 +5,8 @@ import cors from "cors";
 import userRoutes from "./routes/users/userRoutes.js";
 import loadRoutes from "./routes/loads/loadRoutes.js";
 import roleRoutes from "./routes/roles/roleRoutes.js";
+import incidenceRouter from "./routes/incidence/incidenceRoutes.js";
+// import incidenceRoutes from "./routes/incidence/incidenceRoutes"
 
 dotenv.config(); // Carga variables desde .env
 
@@ -23,6 +25,7 @@ app.use(cors());
 app.use("/powerload", loadRoutes);
 app.use("/powerload", roleRoutes);
 app.use("/powerload", userRoutes);
+app.use("/powerload", incidenceRouter);
 
 
 app.listen(PORT, () => {
