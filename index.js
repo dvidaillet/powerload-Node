@@ -6,6 +6,7 @@ import userRoutes from "./routes/users/userRoutes.js";
 import loadRoutes from "./routes/loads/loadRoutes.js";
 import roleRoutes from "./routes/roles/roleRoutes.js";
 import incidenceRouter from "./routes/incidence/incidenceRoutes.js";
+import authRouter from "./routes/authentication/authRoutes.js";
 
 dotenv.config(); // Carga variables desde .env
 
@@ -25,6 +26,7 @@ app.use("/powerload", loadRoutes);
 app.use("/powerload", roleRoutes);
 app.use("/powerload", userRoutes);
 app.use("/powerload", incidenceRouter);
+app.use("/powerload", authRouter);
 
 
 app.listen(PORT, () => {
