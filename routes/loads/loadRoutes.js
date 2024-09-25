@@ -7,12 +7,12 @@ import {
   deleteLoad,
 } from "../../controllers/loads/loadController.js";
 
-const router = express.Router();
+const loadRouter = express.Router();
 
-router.post("/loads", createLoad);
-router.get("/loads", getAllLoads);
-router.get("/loads/:id", getLoadById);
-router.put("/loads/:id", updateLoad);
-router.delete("/loads/:id", deleteLoad);
+loadRouter.post("/loads", createLoad);
+loadRouter.get("/loads", getAllLoads);
+loadRouter.get("/loads/:id", getLoadById);
+loadRouter.put("/loads/:id", updateLoad);
+loadRouter.delete("/loads/:id", deleteLoad);
 
-export default router;
+export default loadRouter;
