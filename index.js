@@ -6,7 +6,6 @@ import userRoutes from "./routes/users/userRoutes.js";
 import loadRoutes from "./routes/loads/loadRoutes.js";
 import roleRoutes from "./routes/roles/roleRoutes.js";
 import incidenceRouter from "./routes/incidence/incidenceRoutes.js";
-// import incidenceRoutes from "./routes/incidence/incidenceRoutes"
 
 dotenv.config(); // Carga variables desde .env
 
