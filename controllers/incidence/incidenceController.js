@@ -1,10 +1,8 @@
-// import User from "../../models/users/User.js";
 import Incidence from "../../models/incidence/Incidence.js";
 
-// Crear un nuevo usuario
 export const createIncidence = async (req, res) => {
   try {
-    const incidence = new Incidence(req.body); // El campo `id` se generará automáticamente
+    const incidence = new Incidence(req.body);
     await incidence.save();
     res.status(201).json(incidence);
   } catch (error) {
@@ -19,13 +17,9 @@ export const getIncidences = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10; // Límite de resultados por página, por defecto 10
     const skip = (page - 1) * limit; // Calcular cuántos resultados saltar
 
-    // Contar el total de usuarios
     const totalIncidences = await Incidence.countDocuments();
-
-    // Obtener los usuarios con paginación
     const incidences = await Incidence.find().skip(skip).limit(limit);
 
-    // Responder con los usuarios y la información de paginación
     res.status(200).json({
       totalIncidences, // Total de usuarios en la base de datos
       totalPages: Math.ceil(totalIncidences / limit), // Total de páginas
@@ -37,7 +31,6 @@ export const getIncidences = async (req, res) => {
   }
 };
 
-// Actualizar usuario por ID
 export const updateIncidences = async (req, res) => {
   try {
     const incidence = await Incidence.findByIdAndUpdate(
@@ -53,7 +46,6 @@ export const updateIncidences = async (req, res) => {
   }
 };
 
-// Eliminar usuario por ID
 export const deleteIncidence = async (req, res) => {
   try {
     await Incidence.findByIdAndDelete(req.params.id);
@@ -63,7 +55,6 @@ export const deleteIncidence = async (req, res) => {
   }
 };
 
-// Obtener un usuario por ID
 export const getIncidenceById = async (req, res) => {
   try {
     const incidence = await Incidence.findById(req.params.id);
