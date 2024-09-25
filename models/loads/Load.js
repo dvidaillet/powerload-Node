@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const loadSchema = new mongoose.Schema(
   {
-    id: { type: String, required: true },
+    _id: { type: String, default: uuidv4 },
     code: { type: String, required: true },
     cost: { type: Number, required: true },
     deal_price: { type: Number, required: true },
