@@ -2,7 +2,7 @@
 import User from "../../models/users/User.js";
 
 // Crear un nuevo usuario
-export const createUser = async (req, res) => {
+export const createIncidence = async (req, res) => {
   try {
     const user = new User(req.body); // El campo `id` se generará automáticamente
     await user.save();
@@ -13,7 +13,7 @@ export const createUser = async (req, res) => {
 };
 
 // Obtener todos los usuarios
-export const getUsers = async (req, res) => {
+export const getIncidences = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Número de página, por defecto 1
     const limit = parseInt(req.query.limit) || 10; // Límite de resultados por página, por defecto 10
@@ -38,7 +38,7 @@ export const getUsers = async (req, res) => {
 };
 
 // Actualizar usuario por ID
-export const updateUser = async (req, res) => {
+export const updateIncidences = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -50,7 +50,7 @@ export const updateUser = async (req, res) => {
 };
 
 // Eliminar usuario por ID
-export const deleteUser = async (req, res) => {
+export const deleteIncidence = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(204).json({ message: "User deleted" });
@@ -60,7 +60,7 @@ export const deleteUser = async (req, res) => {
 };
 
 // Obtener un usuario por ID
-export const getUserById = async (req, res) => {
+export const getIncidenceById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {

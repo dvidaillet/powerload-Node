@@ -1,18 +1,18 @@
 import express from "express";
 import {
-  createUser,
-  getUsers,
-  updateUser,
-  deleteUser,
-  getUserById
+  createIncidence,
+  deleteIncidence,
+  getIncidenceById,
+  getIncidences,
+  updateIncidences,
 } from "../../controllers/incidence/incidenceController.js";
 
 const incidenceRouter = express.Router();
 
-incidenceRouter.post("/incidences", createUser);
-incidenceRouter.get("/incidences", getUsers);
-incidenceRouter.get('/incidences/:id', getUserById); 
-incidenceRouter.put("/incidences/:id", updateUser);
-incidenceRouter.delete("/incidences/:id", deleteUser);
+incidenceRouter.post("/incidences", createIncidence);
+incidenceRouter.get("/incidences", getIncidences);
+incidenceRouter.get("/incidences/:id", getIncidenceById);
+incidenceRouter.put("/incidences/:id", updateIncidences);
+incidenceRouter.delete("/incidences/:id", deleteIncidence);
 
 export default incidenceRouter;
