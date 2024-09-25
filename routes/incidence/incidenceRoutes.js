@@ -5,7 +5,7 @@ import {
   updateUser,
   deleteUser,
   getUserById
-} from "../../controllers/users/userController.js";
+} from "../../controllers/incidence/incidenceController.js";
 
 const incidenceRouter = express.Router();
 
