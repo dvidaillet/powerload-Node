@@ -1,0 +1,51 @@
+import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
+
+const travelSchema = new mongoose.Schema(
+  {
+    _id: { type: String, default: uuidv4 },
+    code: { type: String, required: true },
+    cost: { type: Number, required: true },
+    deal_price: { type: Number, required: true },
+    delivery_date: { type: Date, required: true },
+    delivery_time: { type: String, required: true },
+    distance: { type: Number, required: true },
+    driver: { type: String, default: null },
+    driver_id: { type: String, default: null },
+    exchange_pallets: { type: Number, default: 0 },
+    finished_at: { type: Date, default: null },
+    finished_note: { type: String, default: null },
+    from_state: { type: String, required: true },
+    from_zip: { type: String, default: null },
+    high: { type: Number, required: true },
+    id: { type: Number, required: true },
+    load_types_id: { type: Number, required: true },
+    long: { type: Number, required: true },
+    name: { type: String, required: true },
+    near_position: { type: String, default: null },
+    owner_review: { type: String, default: null },
+    palletized: { type: Number, default: 0 },
+    payment_day: { type: String, required: true },
+    payment_terms: { type: String, required: true },
+    performance: { type: Number, required: true },
+    pickup_date: { type: Date, required: true },
+    pickup_time: { type: String, required: true },
+    plate_id: { type: String, default: null },
+    price: { type: Number, required: true },
+    round_trip: { type: Number, default: 0 },
+    to_address_label1: { type: String, required: true },
+    to_address_label2: { type: String, default: null },
+    to_city: { type: String, required: true },
+    to_state: { type: String, required: true },
+    to_zip: { type: String, default: null },
+    user_id: { type: Number, required: true },
+    volume: { type: Number, required: true },
+    wait: { type: Number, default: 0 },
+    way_to_pay: { type: String, required: true },
+    weight: { type: Number, required: true },
+    width: { type: Number, required: true },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("Travel", travelSchema);
